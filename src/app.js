@@ -10,7 +10,9 @@ app.use(helmet())
 app.use(compression())
 
 //inint db
-
+require('./dbs/Init.mongodb')
+const { checkOverload } = require('./helpers/check.connect')
+checkOverload()
 //init routes
 app.get('/', (req, res, next) => {
     const strCompress = 'Hello Van Nham'
