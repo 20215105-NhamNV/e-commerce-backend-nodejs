@@ -1,7 +1,8 @@
 "use strict"
 
 const mongoose = require('mongoose')
-const connectString = 'mongodb://localhost:27017/shopDev'
+const { db: { host, name, port } } = require('../configs/config.mongodb')
+const connectString = `mongodb://${host}:${port}/${name}`
 const { countConnect } = require('../helpers/check.connect')
 
 class Database {
@@ -17,7 +18,7 @@ class Database {
         }
 
         mongoose.connect(connectString, { maxPoolSize: 50 })
-            .then(_ => console.log('Connected Mongodb Success good version', countConnect()))
+            .then(_ => console.log('Connected Mongodb Success good version', countConnect(), '\n', connectString))
             .catch(err => console.log("Error Connect!"));
     }
 

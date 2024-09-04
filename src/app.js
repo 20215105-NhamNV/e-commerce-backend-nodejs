@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')// log HTTP requests
 const helmet = require('helmet');//security of Express.js applications
@@ -11,14 +12,14 @@ app.use(compression())
 
 //inint db
 require('./dbs/Init.mongodb')
-const { checkOverload } = require('./helpers/check.connect')
-checkOverload()
+// const { checkOverload } = require('./helpers/check.connect')
+// checkOverload()
 //init routes
 app.get('/', (req, res, next) => {
-    const strCompress = 'Hello Van Nham'
+    // const strCompress = 'Hello Van Nham'
     return res.status(200).json({
         message: 'Welcome to my project',
-        metadata: strCompress.repeat(100000)
+        // metadata: strCompress.repeat(100000)
     })
 })
 
